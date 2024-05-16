@@ -1,0 +1,42 @@
+{{!-- <h1>Hello world, {{#if data.name}}{{data.name}}{{/if}}</h1>
+
+<h2>{{#if data.name}}
+    <form action="/logout" method="get">
+        <buttton type="submit">Logout</buttton>
+    </form>
+    {{/if}}
+    
+    {{^if data.name}}<a href="/login">Login</a>
+    {{/if}}</h2> --}}
+    <link rel="stylesheet" href="css/home.css">
+    <header class="site-header">
+        <h1>Hello{{#if data.name}}, {{data.name}}{{/if}}</h1>
+  <div class="burger_icon">
+    <div class="line_one"></div>
+    <div class="line_two"></div>
+    <div class="line_three"></div>
+  </div> 
+  <div class="burger_close">
+  
+  </div> 
+  <nav class="main-nav">
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/add-blog">Create Blog</a></li>
+      <li>
+            {{#if data.name}}
+                <a href="/logout">Logout</a>
+            {{/if}}
+            
+            {{^if data.name}}
+                <a href="/login">Login</a>
+            {{/if}}
+        </li>
+    </ul>
+  </nav>
+</header>
+{{{body}}}
+<!--main -->
+
+<footer><p>Instagram, Facebook, Telegram</p></footer>

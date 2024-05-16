@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create your own blog</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/editor.css">
+    </head>
+    <body>
+      <div class="row">
+    <div class="col-md-12">
+      <form action="/add-blog" method="post">
+        <h1> Create Blog </h1>
+        <div class="banner">
+          <input type="file" accept="image/*" id="banner-upload" hidden>
+          <label for="banner-upload" class="banner-upload-btn"><img src="../img/upload.png" alt="upload banner">
+          </label>
+          <input type="text" class="banner-path" name="banner" hidden>
+      </div>
+     
+        <fieldset>
+          
+          <legend><span class="number">1</span> Create your own Blog:</legend>
+          <label for="name">Title:</label>
+          <input type="text" id="title" name="title">
+        
+          <label for="sub title">Sub title:</label>
+          <input type="text" id="sub-title" name="subtitle">
+       
+          <label for="content">Content:</label>
+          <textarea rows="20" cols="1000" type="text" class="article" name="content"></textarea>
+        
+          <label for="type">Type:</label>
+          <select id="type" name="type">
+            <option value="news">News</option>
+            <option value="history">History</option>
+            <option value="entertain">Entertain</option>
+            <option value="business">Business</option>
+            <option value="education">Education</option>
+        </select>
+        
+        <div class="blog-options">
+          <input type="file" accept="image/*" id="image-upload" hidden>
+          <label for="image-upload" class="btn green upload-btn">Upload Image</label>
+      </div>
+      </fieldset>
+       
+        <button class="createBtn">Create</button>
+        
+       </form>
+        </div>
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <!-- <script src="../js/libs/firebase.js"></script> -->
+      <script src="../js/editor.js"></script>
+    </body>
+</html>

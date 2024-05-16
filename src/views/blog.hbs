@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blog {
+            margin-left: 50px;
+        }
+        .banner{
+            width: 100%;
+        }
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img class="banner" src="{{{blog.bannerPath}}}">
+    <p class="content" hidden>{{blog.content}}</p>
+    <div class="blog">
+    <h1 class="title" style="font-weight: Bold; font: size 100px;">{{blog.title}}</h1>
+    <p class="published"><span>Published at - {{blog.day}}/{{blog.month}}/{{blog.year}} - Type: {{blog.type}} - Author: {{blog.author}}</span></p>
+    <p class="subtitle"><span> {{blog.subtitle}}</span></p>
+    {{!-- <a href="" class="btn" id="edit-blog-btn">edit blog</a> --}}
+    <div class="article"> 
+        {{!-- {{blog.content}}           --}}
+    </div>
+</div>
+<script>
+    const content=document.querySelector('.content')
+    const article = document.querySelector('.article');
+    addArticle(article, content.innerHTML);
+
+    function addArticle (ele, data){
+        //console.log(data)
+        data = data.split("\n").filter(item=>item.length);
+        console.log(data);
+        data.forEach(function(item) {
+            // check for heading
+            if(item[0] == '#'){
+                let hCount = 0;
+                let i = 0;
+                while(item[i] == '#'){
+                    hCount++;
+                    i++;
+                }
+                let tag = `h${hCount}`;
+                ele.innerHTML += `<${tag}>${item.slice(hCount, item.length)}</${tag}>`
+            } 
+            //checking for image format
+            else if(item[0] == "!" && item[1] == "["){
+                let seperator;
+
+                for(let i = 0; i <= item.length; i++){
+                    if(item[i] == "]" && item[i + 1] == "(" && item[item.length - 1] == ")"){
+                        seperator = i;
+                    }
+                }
+
+                let alt = item.slice(2, seperator);
+                let src = item.slice(seperator + 2, item.length - 1);
+                ele.innerHTML += `
+                <img src="${src}" alt="${alt}" class="article-image">
+                `;
+            }
+
+            else{
+                ele.innerHTML += `<p>${item}</p>`;
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

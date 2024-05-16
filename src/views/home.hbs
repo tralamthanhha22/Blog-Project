@@ -1,0 +1,22 @@
+<style>
+  a{
+    text-decoration: none;
+  }
+</style>
+<div class="main">
+
+  <div class="container main-container">
+    {{#each blog}}
+    <div class="blog-item blog-item1">
+      <div class="blog-item-image">
+        <a href="/{{id}}"><img src="{{{banner}}}"></a>
+      </div>
+      <div class="blog-item-content">
+      <a href="/{{id}}"><h1>{{title}}</h1></a>
+        <p>{{subtitle}}</p>
+        </div> 
+    </div> 
+    {{/each}}
+</div> 
+
+</div>
