@@ -60,7 +60,7 @@ const blog={
             subtitle:subtitle,
             content:content,
             type:type,
-            author:req.session.name,
+            author:req.session.user.name,
             bannerPath:bannerPath,
             date:Date.now()
         }
