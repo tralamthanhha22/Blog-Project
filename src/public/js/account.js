@@ -4,7 +4,16 @@ const {getAuth}=require('firebase-admin/auth')
 // let ui = new firebaseui.auth.AuthUI(auth);
 const db=firebase.firestore()
 const auth=firebase.auth()
+
 const account={
+    googleAcc:(req,res,next)=>{
+        const{displayName,email}=req.body
+        req.session.user={
+            name:displayName,
+            email:email
+        }
+        return res.redirect('/')
+    },
     login:(req,res,next)=>{
         let {email,password}=req.body
         const accountCollection = db.collection('account');
@@ -47,14 +56,16 @@ const account={
         }
         const accountRef=db.collection('account').add(data)
         console.log('Document written with ID:', accountRef.id);
-
         return res.send('add success');
-
     },
 
     logout:(req,res,next)=>{
         req.session.email=''
         req.session.password=''
+        req.session.name=''
+        req.session.user=''
+        console.log(req.session.email)
+        return res.redirect('/')
     },
 }
 module.exports=account  

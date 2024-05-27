@@ -10,7 +10,13 @@
     {{/if}}</h2> --}}
     <link rel="stylesheet" href="css/home.css">
     <header class="site-header">
+      {{#if user.name}}
+        <h1>Hello{{#if user.name}}, {{user.name}}{{/if}}</h1>
+      {{/if}}
+
+      {{^if user}}
         <h1>Hello{{#if data.name}}, {{data.name}}{{/if}}</h1>
+      {{/if}}
   <div class="burger_icon">
     <div class="line_one"></div>
     <div class="line_two"></div>
@@ -25,12 +31,13 @@
       <li><a href="/">Home</a></li>
       <li><a href="/add-blog">Create Blog</a></li>
       <li>
-            {{#if data.name}}
-                <a href="/logout">Logout</a>
+            {{#if user}}
+                {{!-- <li><form action="/logout"><button type="submit">Logout</button></form></li> --}}
+                <li><a href="/logout">Logout</a></li>           
             {{/if}}
             
-            {{^if data.name}}
-                <a href="/login">Login</a>
+            {{^if user}}
+                <a href="/login-google">Login</a>
             {{/if}}
         </li>
     </ul>

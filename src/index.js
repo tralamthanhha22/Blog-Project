@@ -5,6 +5,7 @@ const path=require('path')
 
 const blog=require('./public/js/blog')
 const account=require('./public/js/account')
+// const googleAcc=require('./public/js/googleAccount')
 
 const handlebars=require('express-handlebars')
 
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
         email:req.session.email,
         name:req.session.name,
     }
+    console.log(req.session.user)
     const blogCollection = db.collection('blog');
     var blogs = []; // Array to store retrieved student data
 
@@ -61,8 +63,9 @@ app.get('/', (req, res) => {
                 id:blogData.titleID
             })
         });
-        console.log('blog:', blogs); // Print all blog data
-        return res.render("home",{data,blog:blogs});
+        // console.log('blog:', blogs); // Print all blog data
+        // return res.render("home",{data,blog:blogs,user:req.session.user});
+        return res.render("home",{blog:blogs,user:req.session.user});
     })
     .catch((error) => {
         console.error('Error fetching blog:', error);
@@ -95,6 +98,10 @@ app.post('/add-blog',blog.createBlog)
 
 
 //Đăng nhập account
+app.get('/login-google',(req,res)=>{
+    return res.sendFile(path.join(initial_path, "html/loginGoogle.html"));
+})
+app.post('/login-google',account.googleAcc)
 app.get('/login',(req,res)=>{
     return res.sendFile(path.join(initial_path, "html/login.html"));
 })

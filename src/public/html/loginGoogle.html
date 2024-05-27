@@ -1,0 +1,31 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login with Google</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/editor.css">
+        <link  rel="stylesheet" href="css/google.css">
+    </head>
+    <body>
+        <script src="../js/googleAccount.js"type="module"></script>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" id="login-with-google-btn" >
+                    Sign in with Google
+                </button>
+            </div>
+            <form id="myForm" action="/login-google" method="post">
+                <input type="text" id="displayName" name="displayName"hidden/>
+                <input type="text" id="email" name="email" hidden/>
+                <button type="submit" hidden></button>
+            </form>
+        </div>
+        
+        <!-- <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script> -->
+      
+    </body>
+</html>
